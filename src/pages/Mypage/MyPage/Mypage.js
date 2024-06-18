@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../../../components/Header/Header.js';
 import { checkAccessTokenValidity } from './Mypage_func.js';
 import './Mypage.css';
-function MyPage({selectedImage,setSelectedImage}) {
+function MyPage() {
     const [user_name, setUser_Name] = useState(localStorage.getItem('Nickname'));
     const [user_level, setUser_Level] = useState(10);
     const [total_exp,setTotal_Exp] = useState(100);
@@ -22,7 +22,7 @@ function MyPage({selectedImage,setSelectedImage}) {
     useEffect(() => {
         const access_Token = localStorage.getItem('access_Token');
         if (!access_Token) {
-        //navigate('/Login');
+            navigate('/Login');
         }
     }, []);
 
@@ -47,10 +47,10 @@ function MyPage({selectedImage,setSelectedImage}) {
 
     return (
         <div className='MyPage_container'>
-            <Header selectedImage ={selectedImage} setSelectedImage= {setSelectedImage}/>
+            <Header/>
             <div className="MyPage">
                 <div className="MyPage_Proflie">
-                    <img className="MyPage_Proflie_img" src={selectedImage ? selectedImage : 'https://via.placeholder.com/350x350'} alt="프로필 사진" />
+                    <img className="MyPage_Proflie_img" src={localStorage.getItem('image') ? localStorage.getItem('image') : 'https://via.placeholder.com/350x350'} alt="프로필 사진" />
                     <div className="MyPage_User_name">{user_name}</div>
                     <div className="MyPage_Lv">Lv.{user_level}</div>
                     <div className="MyPage_Exp">

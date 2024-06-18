@@ -22,4 +22,5 @@ export const handleDeleteAccount = (DeleteAccount) => {
 
 export const Change_user_Inform = (Nickname,Password,Passwordcheck) =>{
   localStorage.setItem('Nickname', Nickname);
+  window.location.reload(); // 현재 페이지를 새로고침
 }

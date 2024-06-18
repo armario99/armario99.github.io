@@ -3,13 +3,14 @@ import './Header.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { logout } from './Header_func';
-export default function Header({selectedImage,setSelectedImage}) {
+export default function Header() {
   const navigate = useNavigate();
   const accessToken = localStorage.getItem('access_Token');
   const [user_name, setUser_name] = useState(localStorage.getItem('Nickname'));
-  const [user_Lv, setUser_Lv] = useState(localStorage.getItem('LV'));
+  const [user_Lv, setUser_Lv] = useState(10);//useState(localStorage.getItem('LV'));
+  
   const nav_Logout = () =>{
-    const logout_result = logout();
+    const logout_result = logout(navigate);
     console.log(logout_result);
     if(logout_result){
       navigate('/Login');
@@ -33,8 +34,8 @@ export default function Header({selectedImage,setSelectedImage}) {
         {accessToken ? (
           <div className="Header_user_box" onClick={() => Link_MyPage()}>
             <div className="Header_user_box_Text">{user_name}</div>
-            <img className="Header_user_box_Image" src={selectedImage ? selectedImage : 'https://via.placeholder.com/350x350'} alt="Profile" />
-            <div className="Level1">{user_Lv}}</div>
+            <img className="Header_user_box_Image" src={localStorage.getItem('image') ? localStorage.getItem('image') : 'https://via.placeholder.com/350x350'} alt="Profile" />
+            <div className="Level1">Level {user_Lv}</div>
             <div className="Logout" onClick={() => nav_Logout()}>로그아웃</div>
           </div>
         ) : (

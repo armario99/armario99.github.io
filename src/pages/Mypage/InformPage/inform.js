@@ -5,7 +5,7 @@ import { handleDeleteAccount,Change_user_Inform } from './inform_func.js';
 import Header from '../../../components/Header/Header.js';
 import Modal from './Modal'; // Modal 컴포넌트 import
 
-function InformPage({selectedImage,setSelectedImage}) {
+function InformPage() {
   const navigate = useNavigate();
   const [Nickname, setNickname] = useState('');
   const [Password, setPassword] = useState('');
@@ -17,7 +17,7 @@ function InformPage({selectedImage,setSelectedImage}) {
   useEffect(() => {
     const access_Token = localStorage.getItem('access_Token');
     if (!access_Token) {
-      //navigate('/Login');
+      navigate('/Login');
     }
   }, []);
 
@@ -33,19 +33,19 @@ function InformPage({selectedImage,setSelectedImage}) {
 
   // 모달에서 이미지 선택 처리 함수
   const handleImageSelect = (imageUrl) => {
-    setSelectedImage(imageUrl);
+    localStorage.setItem('image',imageUrl);
     console.log('선택된 이미지:', imageUrl);
     closeModal(); // 모달 닫기
   };
 
   return (
     <div className='Inform_body'>
-      <Header selectedImage ={selectedImage} setSelectedImage= {setSelectedImage} />
+      <Header selectedImage />
       <div className='Inform_container'>
         <div className="Inform_Page">
           {/* 프로필 이미지 영역 */}
           <div className="Inform_profile-section">
-            <img className="Inform_profile-image" src={selectedImage ? selectedImage : 'https://via.placeholder.com/350x350'} />
+            <img className="Inform_profile-image" src={localStorage.getItem('image') ? localStorage.getItem('image') : 'https://via.placeholder.com/350x350'} />
             <div className="Inform_profile-button-container">
               <button className="Inform_Pic_Btn" onClick={openModal}>프로필 사진 변경</button>
             </div>
@@ -92,7 +92,7 @@ function InformPage({selectedImage,setSelectedImage}) {
                   </div>
                 </div>
                 <div className="Inform_save-button-container">
-                  <button className="Inform_Rectangle12" onClick={Change_user_Inform(Nickname,Password,Passwordcheck)}>저장</button>
+                  <button className="Inform_Rectangle12" onClick={() => Change_user_Inform(Nickname, Password, Passwordcheck)}>저장</button>
                 </div>
                 <div className="Inform_withdraw-instruction">회원 탈퇴 하시려면 “회원 탈퇴”를 입력해주세요.</div>
                 <div className="Inform_confirm-password-section">

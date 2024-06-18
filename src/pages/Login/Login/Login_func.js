@@ -41,10 +41,10 @@
         return responseData;
     })
     .then(responseData  => {
-      handle_Login_Response(responseData,navigate);
+      handle_Login_Response(responseData,navigate,data);
     });
   }    
-  const handle_Login_Response = (responseData,navigate) => {
+  const handle_Login_Response = (responseData,navigate,data) => {
     const statusCode = responseData.status.code;
     const message = responseData.status.message;
 
@@ -52,6 +52,7 @@
       case 200:
           console.log( message);
           alert(message);
+          localStorage.setItem('Nickname', data.loginId);
           navigate('/MyPage');
           break;
       case 400:
