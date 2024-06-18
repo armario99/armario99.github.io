@@ -5,14 +5,15 @@ import './Modal.css';
 
 const Modal = ({ isOpen, onClose, onSelect }) => {
   const images = [
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
+    '/boy.jpg',
+    '/dog.jpg',
+    '/girl.png',
+    '/man.jpg',
+    '/woman.jpg',
+    '/programmer.jpeg',
+    '/female-programmer.jpeg',
     '/logo512.png',
-    '/test.png',
+    
   ];
 
   return (
@@ -31,7 +32,7 @@ const Modal = ({ isOpen, onClose, onSelect }) => {
               />
             ))}
           </div>
-          <button onClick={onClose}>Close Modal</button>
+          <button className='Inform_Close_Modal' onClick={onClose}>Close Modal</button>
         </div>
       </div>
     )

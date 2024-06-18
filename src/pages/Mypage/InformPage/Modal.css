@@ -21,6 +21,10 @@
     max-width: 80%;
     max-height: 80%;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   
   .image-grid {
@@ -36,3 +40,8 @@
     border-radius: 50%;
   }
   
+  .Inform_Close_Modal{
+    width: 50%;
+    height: 30px;
+    margin-top: 10px;
+  }
