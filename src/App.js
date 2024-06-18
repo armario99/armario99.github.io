@@ -11,10 +11,10 @@ function App() {
   return (
     <div className="App">
       <Routes> 
-          <Route path="/Login" element={<LoginPage setNickname = {setNickname} />} />
+          <Route path="/Login" element={<LoginPage/>} />
           <Route path="/Join" element={<JoinPage/>} />
-          <Route path="/MyPage" element={<MyPage selectedImage ={selectedImage} setSelectedImage= {setSelectedImage} Nickname = {Nickname} />} />
-          <Route path="/InformPage" element={<InformPage selectedImage ={selectedImage} setSelectedImage= {setSelectedImage} Nickname = {Nickname} setNickname = {setNickname} />} />
+          <Route path="/MyPage" element={<MyPage/>} />
+          <Route path="/InformPage" element={<InformPage />} />
       </Routes>
     </div>
   );
