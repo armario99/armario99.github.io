@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../../components/Header/Header.js';
-import { refreshAccessToken } from '../../../refreshAccessToken.js';
 import { checkAccessTokenValidity } from './Mypage_func.js';
 import './Mypage.css';
 function MyPage({selectedImage,setSelectedImage}) {
